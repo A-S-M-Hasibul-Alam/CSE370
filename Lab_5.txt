@@ -1,0 +1,19 @@
+Answer to the Ques 1
+select c.customer_name, c.customer_city from (customer c inner join borrower b on c.customer_id = b.customer_id) inner join loan l on b.loan_number = l.loan_number where l.branch_name = 'Perryridge';
+Answer to the Ques 2
+select branch_name from branch where assets > some (select assets from branch where branch_city = 'Brooklyn');
+Answer to the Ques 3
+select branch_name from branch where assets > all (select assets from branch where branch_city = 'Horseneck');
+Answer to the Ques 4
+select * from loan order by amount desc , loan_number asc;
+Answer to the Ques 5
+select branch_name from account where (select avg(balance)>=700);
+Answer to the Ques 6
+select c.customer_name, a.account_number from (customer c inner join depositor d on c.customer_id = d.customer_id) inner join account a on d.account_number = a.account_number order by a.balance desc limit 3;
+Answer to the Ques 7
+select C.customer_name from ((Customer C inner join depositor D on C.customer_id = D.customer_id) inner join account A on A.account_number = D.account_number) where customer_name != "Johnson" and branch_name in  (select A.branch_name from ((Customer C inner join depositor D on C.customer_id = D.customer_id) inner join account A on A.account_number = D.account_number) where customer_name = "Johnson");
+Answer to the Ques 8
+select c.customer_name from (customer c inner join depositor d on c.customer_id = d.customer_id) inner join account a on d.account_number=a.account_number where branch_name = 'Mianus' and customer_name not in (select c.customer_name from (customer c inner join borrower b on c.customer_id = b.customer_id) inner join loan l on l.loan_number = b.loan_number where l.branch_name = 'Mianus');
+Answer to the Ques 10
+select c.customer_name from (customer c inner join depositor d on c.customer_id = d.customer_id) inner join account a on d.account_number=a.account_number where branch_name = 'Mianus' and customer_name not in (select c.customer_name from (customer c inner join borrower b on c.customer_id = b.customer_id) inner join loan l on l.loan_number = b.loan_number where l.branch_name = 'Mianus');
+

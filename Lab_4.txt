@@ -1,0 +1,20 @@
+Answer to the Ques 1
+select employee_id, last_name, email, salary and department_id from employees where (department_id, salary) in (select department_id, max (salary) from employees group by department_id);
+Answer to the Ques 2
+select employee_id, last_name, email, commission_pct and department_id from employees where (department_id,commission_pct) in (select department_id, max (commission_pct) from employees group by department_id);
+Answer to the Ques 3
+select employee_id, last_name, email, commission_pct and department_id from employees where (department_id,commission_pct) in (select department_id, min (commission_pct) from employees group by department_id);
+Answer to the Ques 4
+select employee_id, last_name, email, commission_pct and department_id from employees where department_id = 'ABCXYZ' and commission_pct > any (select commission_pct from employees where department_id = 'XYZABC');
+Answer to the Ques 5
+select employee_id, last_name, email, salary and department_id from employees where department_id = 'ABCXYZ' and salary> any (select salary from employees where department_id = 'XYZABC');
+Answer to the Ques 6
+select department_id, job_id and salary from employees where salary > any (select salary from employees) group by department_id;
+Answer to the Ques 7
+select manager_id from employees e1 where exists (select * from employees e2 where e2.manager_id = e1.manager_id and e2.salary<2500);
+Answer to the Ques 8
+select manager_id from employees e1 where exists (select * from employees e2 where e2.manager_id = e1.manager_id and e2.commission_pct<18.25);
+Answer to the Ques 9
+select manager_id from employees e1 where exists (select * from employees e2 where e2.manager_id != e1.manager_id and e2.salary<3500);
+Answer to the Ques 10
+select manager_id from employees e1 where exists (select * from employees e2 where e2.manager_id != e1.manager_id and e2.commission_pct<45.05);

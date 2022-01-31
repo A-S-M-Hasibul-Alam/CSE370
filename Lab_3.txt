@@ -1,0 +1,40 @@
+Answer to the Ques 1
+select distinct multiplier from users order by multiplier desc;
+Answer to the Ques 2
+select member_id, influence_count from users order by influence_count asc;
+Answer to the Ques 3
+select distinct member_since from users;
+Answer to the Ques 4
+select name,email,member_since from users where member_since='2020-07-01';
+Answer to the Ques 5
+select name,email,member_since from users where member_since<'2020-07-01';
+Answer to the Ques 6
+select name,email,member_since from users where member_since between '2020-07-31' and '2020-08-15';
+Answer to the Ques 7
+select name,email,member_since from users where influence_count >  750000;
+Answer to the Ques 8
+select name,email,member_since from users where member_since between '2020-07-31' and '2020-08-15' and influence_count > 750000;
+Answer to the Ques 9
+select member_id,email from users where email like '%com';
+Answer to the Ques 10
+select member_id,name from users where email like '%djangoproject%';
+Answer to the Ques 11
+select name,email,max(influence_count) from users;
+Answer to the Ques 12
+select name, member_since from users order by member_since desc limit 5;
+Answer to the Ques 13
+select count(*) from users;
+Answer to the Ques 14
+select count(distinct(multiplier)) from users;
+Answer to the Ques 15
+select name,multiplier,influence_count from users where (multiplier, influence_count) in (select multiplier, max(influence_count) from users group by multiplier);
+Answer to the Ques 16
+select name,multiplier,influence_count from users where (multiplier, influence_count) in (select multiplier, max(influence_count) from users group by multiplier);
+Answer to the Ques 17
+select multiplier from users group by multiplier order by count(multiplier) desc limit 1;
+Answer to the Ques 18
+select multiplier from users where influence_count=(select max(influence_count) from users) group by multiplier;
+Answer to the Ques 19
+ select name,multiplier,count(name) from users where member_since > '%04%' group by multiplier;
+Answer to the Ques 20
+select name from users where influence_count>700000 and (multiplier%2=0);
